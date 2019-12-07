@@ -1,3 +1,4 @@
+
 defmodule Digit do
   def has_adjacent_digits?(number) do
     if number > 9 do
