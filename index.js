@@ -3,12 +3,17 @@ import InteractiveConsole from './lib/interactiveConsole.js'
 import promptUserMainMenu from './lib/promptUserMainMenu.js'
 
 const main = async () => {
-  const activeConsole = new InteractiveConsole()
+  try {
+    const activeConsole = new InteractiveConsole()
+    const selection = await promptUserMainMenu(activeConsole)
 
-  const selection = await promptUserMainMenu(activeConsole)
-  activeConsole.write(selection)
+    await import('./' + selection.path)
 
-  activeConsole.close()
+    activeConsole.close()
+  } catch (err) {
+    console.error(err)
+    process.exit()
+  }
 }
 
 main()

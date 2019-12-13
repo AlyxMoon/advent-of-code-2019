@@ -1,5 +1,9 @@
-const { readFile } = require('fs')
-const { promisify } = require('util')
+import { readFile } from 'fs'
+import { promisify } from 'util'
+import { dirname, join } from 'path'
+import { fileURLToPath } from 'url'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 const parseInputFile = async (fileLocation) => {
   try {
@@ -36,7 +40,7 @@ const runIntcodeProgram = (input) => {
 
 const main = async () => {
   try {
-    const inputFilePath = process.argv[2] || 'input.txt'
+    const inputFilePath = process.argv[2] || join(__dirname, './input.txt')
     const input = await parseInputFile(inputFilePath)
     const output = runIntcodeProgram(codeInjection(input))
     console.log(output[0])

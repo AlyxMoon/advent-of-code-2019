@@ -1,5 +1,9 @@
-const { readFile } = require('fs')
-const { promisify } = require('util')
+import { readFile } from 'fs'
+import { promisify } from 'util'
+import { dirname, join } from 'path'
+import { fileURLToPath } from 'url'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 const parseInputFile = async (fileLocation) => {
   try {
@@ -18,8 +22,8 @@ const calculateFuelRequirements = (moduleMasses) => {
 
 const main = async () => {
   try {
-    if (!process.argv[2]) throw new Error('Location for the input file is required as the first argument!')
-    const input = await parseInputFile(process.argv[2])
+    const inputFilePath = process.argv[2] || join(__dirname, './input.txt')
+    const input = await parseInputFile(inputFilePath)
     console.log(calculateFuelRequirements(input))
   } catch (error) {
     console.error('BIG OL ERROR: ', error.message)
