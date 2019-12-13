@@ -14,7 +14,12 @@ const main = async () => {
 
     const script = await import(`./${selection.scriptPath}`)
 
-    const output = await script.run({ inputPath: join(__dirname, selection.inputPath) })
+    const output = await script.run(Object.assign(
+      {},
+      (selection.args || {}),
+      { inputPath: join(__dirname, selection.inputPath) },
+    ))
+
     activeConsole.write('\n====================')
       .write('Script successfully run!\n')
       .write('Output: ', null, { noNewline: true })
@@ -22,7 +27,8 @@ const main = async () => {
       .write('\n====================')
 
     activeConsole.close()
-  } catch (err) {
+  }
+  catch (err) {
     console.error(`Error: ${err.message} \n ${err.stack.split('\n')[1].trim()}`)
     process.exit()
   }
