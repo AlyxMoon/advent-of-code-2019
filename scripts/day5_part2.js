@@ -17,17 +17,9 @@ export const run = async ({ inputPath = '' }) => {
   const input = await parseInputFile(inputPath)
 
   const computer = new IntcodeComputer()
-    .setMode(IntcodeProgramMode.INJECT_AND_FIND)
-    .setDesiredFindValue(19690720)
-    .setCodeInjectionRange([{ address: 1, min: 0, max: 99 }, { address: 2, min: 0, max: 99 }])
+    .setMode(IntcodeProgramMode.DIAGNOSTIC)
     .setProgram(input)
+    .setUserInput([5])
 
-  const output = computer.run()
-
-  if (output) {
-    console.log('Raw output:', output, '\n')
-    return 100 * output[0].value + output[1].value
-  } else {
-    console.log('No value found!')
-  }
+  return computer.run()
 }

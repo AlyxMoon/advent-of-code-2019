@@ -19,6 +19,7 @@ module.exports = {
         'allowImportExportEverywhere': true,
     },
     'rules': {
+      'brace-style': ['error', 'stroustrup', { 'allowSingleLine': true }],
       'comma-dangle': ['error', 'always-multiline'],
     },
 }

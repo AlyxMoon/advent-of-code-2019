@@ -1,9 +1,5 @@
 import { readFile } from 'fs'
 import { promisify } from 'util'
-import { dirname, join } from 'path'
-import { fileURLToPath } from 'url'
-
-const __dirname = dirname(fileURLToPath(import.meta.url))
 
 const parseInputFile = async (fileLocation) => {
   try {
@@ -17,8 +13,9 @@ const parseInputFile = async (fileLocation) => {
         if (path[0] === 'L') dx = -1
         if (path[0] === 'R') dx = 1
         return [[dx, dy], parseInt(path.slice(1), 10)]
-      } ))
-  } catch (error) {
+      }))
+  }
+  catch (error) {
     throw new Error(`Error when reading the input file: ${error.message}`)
   }
 }
@@ -50,8 +47,7 @@ const findShortestManhattenDistance = (grid) => {
 }
 
 export const run = async ({ inputPath = '' }) => {
-  const inputFilePath = inputPath || join(__dirname, './input.txt')
-  const input = await parseInputFile(inputFilePath)
+  const input = await parseInputFile(inputPath)
   const grid = buildWireGrid(input)
   const output = findShortestManhattenDistance(grid)
   return output
