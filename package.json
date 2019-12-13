@@ -1,0 +1,25 @@
+{
+  "name": "advent-of-code-2019",
+  "version": "1.0.0",
+  "description": "My collection of code used to find solutions for each day of Advent Of Code 2019",
+  "main": "index.js",
+  "repository": "git@github.com:AlyxMoon/advent-of-code-2019.git",
+  "author": "Allister <allisterkmoon@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "node --experimental-modules index.js"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.7.2",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0"
+  },
+  "dependencies": {
+    "chalk": "^3.0.0"
+  }
+}
