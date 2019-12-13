@@ -20,15 +20,8 @@ const calculateFuelRequirements = (moduleMasses) => {
   }, 0)
 }
 
-const main = async () => {
-  try {
-    const inputFilePath = process.argv[2] || join(__dirname, './input.txt')
-    const input = await parseInputFile(inputFilePath)
-    console.log(calculateFuelRequirements(input))
-  } catch (error) {
-    console.error('BIG OL ERROR: ', error.message)
-    process.exit()
-  }
+export const run = async ({ inputPath = '' }) => {
+  const inputFilePath = inputPath || join(__dirname, './input.txt')
+  const input = await parseInputFile(inputFilePath)
+  return calculateFuelRequirements(input)
 }
-
-main()

@@ -1,26 +1,32 @@
 [
   {
     "name": "Day 1",
-    "path": "day1/day1.js"
+    "inputPath": "inputs/day1.txt",
+    "scriptPath": "scripts/day1.js"
   },
   {
     "name": "Day 2",
-    "path": "day2/day2.js"
+    "inputPath": "inputs/day2.txt",
+    "scriptPath": "scripts/day2.js"
   },
   {
     "name": "Day 3 (part 1)",
-    "path": "day3/day3_part1.js"
+    "inputPath": "inputs/day3.txt",
+    "scriptPath": "scripts/day3_part1.js"
   },
   {
     "name": "Day 3 (part 2)",
-    "path": "day3/day3_part2.js"
+    "inputPath": "inputs/day3.txt",
+    "scriptPath": "scripts/day3_part2.js"
   },
   {
     "name": "Day 5 (part 1)",
-    "path": "day5/day5_part1.js"
+    "inputPath": "inputs/day5.txt",
+    "scriptPath": "scripts/day5_part1.js"
   },
   {
     "name": "Day 5 (part 2)",
-    "path": "day5/day5_part2.js"
+    "inputPath": "inputs/day5.txt",
+    "scriptPath": "scripts/day5_part2.js"
   }
 ]

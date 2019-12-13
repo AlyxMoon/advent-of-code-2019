@@ -26,40 +26,32 @@ const parseInputFile = async (fileLocation) => {
 const buildWireGrid = (wirePaths) => {
   return wirePaths.reduce((grid, path, wireIndex) => {
     let [wireX, wireY] = [0, 0]
-
+    let steps = 0
     path.forEach(([[dx, dy], cellsTravelled]) => {
       for (let i = 1; i <= cellsTravelled; i++) {
         [wireX, wireY] = [wireX + dx, wireY + dy]
+        steps += 1
 
         let index = `${wireX},${wireY}`
-        grid[index] = grid[index] || [false, false]
-        grid[index][wireIndex] = true
+        grid[index] = grid[index] || [0, 0]
+        grid[index][wireIndex] = steps
       }
     })
 
     return grid
-  }, { '0,0': [true, true] })
+  }, { '0,0': [0, 0] })
 }
 
-const findShortestManhattenDistance = (grid) => {
-  delete grid['0,0']
-  return Object.entries(grid)
-    .filter(([index, wiresTouched]) => wiresTouched[0] && wiresTouched[1])
-    .map(([index, wiresTouched]) => index.split(','))
-    .reduce((smallestDistance, [x, y]) => Math.min(smallestDistance, Math.abs(x) + Math.abs(y)), Infinity)
+const findFewestCombinedWireSteps = (grid) => {
+  return Object.values(grid)
+    .filter(([wire1Steps, wire2Steps]) => wire1Steps && wire2Steps)
+    .reduce((smallestDistance, [wire1Steps, wire2Steps]) => Math.min(smallestDistance, wire1Steps + wire2Steps), Infinity)
 }
 
-const main = async () => {
-  try {
-    const inputFilePath = process.argv[2] || join(__dirname, './input.txt')
-    const input = await parseInputFile(inputFilePath)
-    const grid = buildWireGrid(input)
-    const output = findShortestManhattenDistance(grid)
-    console.log(output)
-  } catch (error) {
-    console.error('BIG OL ERROR: ', error.message)
-    process.exit()
-  }
+export const run = async ({ inputPath = '' }) => {
+  const inputFilePath = inputPath || join(__dirname, './input.txt')
+  const input = await parseInputFile(inputFilePath)
+  const grid = buildWireGrid(input)
+  const output = findFewestCombinedWireSteps(grid)
+  return output
 }
-
-main()
