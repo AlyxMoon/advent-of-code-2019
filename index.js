@@ -15,9 +15,11 @@ const main = async () => {
     const script = await import(`./${selection.scriptPath}`)
 
     const output = await script.run({ inputPath: join(__dirname, selection.inputPath) })
-    activeConsole.write('Script successfully run!')
+    activeConsole.write('\n====================')
+      .write('Script successfully run!\n')
       .write('Output: ', null, { noNewline: true })
-      .write(output)
+      .write(output, null, { color: 'yellow' })
+      .write('\n====================')
 
     activeConsole.close()
   } catch (err) {
