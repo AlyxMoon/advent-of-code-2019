@@ -7,29 +7,48 @@ import promptUserMainMenu from './lib/promptUserMainMenu.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
+const readCommandLineArgs = () => {
+  const [day, part] = (process.argv[2] || '0.1').split('.').map((num, i) => Number(num) || i)
+  return { day, part }
+}
+
 const main = async () => {
+  const activeConsole = new InteractiveConsole()
+
   try {
-    const activeConsole = new InteractiveConsole()
-    const selection = await promptUserMainMenu(activeConsole)
+    let { day, part } = readCommandLineArgs()
 
-    const script = await import(`./${selection.scriptPath}`)
+    activeConsole.hideCursor().clear()
 
-    const output = await script.run(Object.assign(
-      {},
-      (selection.args || {}),
-      { inputPath: join(__dirname, selection.inputPath) },
-    ))
+    while (true) {
+      const selection = await promptUserMainMenu(activeConsole, { day, part })
+      if (selection.name === 'Exit') break
+      [day, part] = [null, null]
 
-    activeConsole.write('\n====================')
-      .write('Script successfully run!\n')
-      .write('Output: ', null, { noNewline: true })
-      .write(output, null, { color: 'yellow' })
-      .write('\n====================')
+      const script = await import(`./${selection.scriptPath}`)
 
-    activeConsole.close()
+      activeConsole.write(`\nRunning script: ${selection.name}`)
+
+      const startTime = Date.now()
+      const output = await script.run(Object.assign(
+        {},
+        (selection.args || {}),
+        { inputPath: join(__dirname, selection.inputPath) },
+      ))
+
+      activeConsole.write('====================')
+        .write('Script successfully run!\n')
+        .write(output || ' ', null, { color: 'yellow', prepend: 'Output: ' })
+        .write(`${Date.now() - startTime}ms`, null, { color: 'yellow', prepend: 'Execution Time: ' })
+        .write('\n====================')
+    }
+
+    activeConsole.moveAndOrClearLine(1000, false).close()
   }
   catch (err) {
-    console.error(`Error: ${err.message} \n ${err.stack.split('\n')[1].trim()}`)
+    activeConsole.moveAndOrClearLine(1000, false)
+      .write(err.message, null, { color: 'red', prepend: 'Error: ' })
+      .write(err.stack.split('\n')[1].trim())
     process.exit()
   }
 }

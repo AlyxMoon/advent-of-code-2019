@@ -24,10 +24,5 @@ export const run = async ({ inputPath = '' }) => {
 
   const output = computer.run()
 
-  if (output) {
-    console.log('Raw output:', output, '\n')
-    return 100 * output[0].value + output[1].value
-  } else {
-    console.log('No value found!')
-  }
+  return output ? 100 * output[0].value + output[1].value : 'No value found!'
 }
