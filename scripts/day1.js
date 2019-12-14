@@ -11,13 +11,16 @@ const parseInputFile = async (fileLocation) => {
   }
 }
 
-const calculateFuelRequirements = (moduleMasses) => {
-  return moduleMasses.reduce((sum, mass) => {
-    return sum + Math.floor(mass / 3) - 2
-  }, 0)
+const calculateFuelRequirements = (moduleMasses, fuelRequiresFuel = false) => {
+  return fuelRequiresFuel
+    ? moduleMasses.reduce((sum, mass) => {
+      const currentFuelRequired = Math.floor(mass / 3) - 2
+      return sum + (currentFuelRequired > 0 ? currentFuelRequired + calculateFuelRequirements([currentFuelRequired], true) : 0)
+    }, 0)
+    : moduleMasses.reduce((sum, mass) => sum + Math.floor(mass / 3) - 2, 0)
 }
 
-export const run = async ({ inputPath = '' }) => {
+export const run = async ({ inputPath = '', part = 1 }) => {
   const input = await parseInputFile(inputPath)
-  return calculateFuelRequirements(input)
+  return calculateFuelRequirements(input, part !== 1)
 }

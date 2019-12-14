@@ -1,8 +1,14 @@
 [
   {
-    "name": "Day 1",
+    "name": "Day 1 (part 1)",
     "inputPath": "inputs/day1.txt",
     "scriptPath": "scripts/day1.js"
+  },
+  {
+    "name": "Day 1 (part 2)",
+    "inputPath": "inputs/day1.txt",
+    "scriptPath": "scripts/day1.js",
+    "args": { "part": 2 }
   },
   {
     "name": "Day 2 (part 1)",
