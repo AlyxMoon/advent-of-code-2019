@@ -1,7 +1,7 @@
 import { readFile } from 'fs'
 import { promisify } from 'util'
 
-import { IntcodeComputer, IntcodeProgramMode } from '../lib/intcodeComputer.js'
+import { IntcodeComputer, IntcodeProgramMode } from '../lib/programs/IntcodeComputer.js'
 
 const parseInputFile = async (fileLocation) => {
   try {

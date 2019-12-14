@@ -1,4 +1,4 @@
-const { IntcodeComputer, IntcodeProgramMode } = require('@lib/intcodeComputer')
+const { IntcodeComputer, IntcodeProgramMode } = require('@lib/programs/IntcodeComputer')
 
 describe('Intcode Computer', () => {
   it('works with opcode 5 and 6 (jump-if-true/jump-if-false)', () => {
