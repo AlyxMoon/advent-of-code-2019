@@ -41,4 +41,15 @@ describe('OrbitMap', () => {
 
     expect(orbitMap.setMap(map).checksumMap()).toBe(42)
   })
+
+  it('gets proper distance to santa 1', () => {
+    const orbitMap = new OrbitMap()
+    const map = [
+      'COM)B', 'B)C', 'C)D', 'D)E', 'E)F', 'B)G',
+      'G)H', 'D)I', 'E)J', 'J)K', 'K)L',
+      'K)YOU', 'I)SAN'
+    ]
+
+    expect(orbitMap.setMap(map).distanceToSanta()).toBe(4)
+  })
 })

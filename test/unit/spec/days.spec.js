@@ -30,10 +30,9 @@ describe('Solutions remain consistent', () => {
     expect(await day5part2({ inputPath })).toEqual([5525561])
   })
 
-  it('Day 6 (Part 1)', async () => {
-    expect(await day6({
-      inputPath: join(__dirname, '../../../inputs/day6.txt'),
-      part: 1,
-    })).toEqual(160040)
+  it('Day 6)', async () => {
+    const inputPath = join(__dirname, '../../../inputs/day6.txt')
+    expect(await day6({ inputPath, part: 1 })).toEqual(160040)
+    expect(await day6({ inputPath, part: 2 })).toEqual(373)
   })
 })
