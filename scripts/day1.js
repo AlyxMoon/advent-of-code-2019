@@ -11,6 +11,21 @@ const parseInputFile = async (fileLocation) => {
   }
 }
 
+/*
+Drat, never could figure out a formula for not requiring recursion to calculate fuel
+Couldn't quite get the rounding right, off by 1 at various values
+
+const logOfBase = (n, base) => Math.log(n) / Math.log(base)
+const getFinalIndex = (startVal) => Math.floor(logOfBase(startVal / 2, 3) + logOfBase(0.5, 3))
+const getValAtIndex = (start, n) => Math.floor( start / (3 ** n) ) - Math.floor( (2 ** n) / (3 * n) )
+moduleMasses.reduce((sum, mass) => {
+  for (let i = 1, end = getFinalIndex(mass) + 1; i < end; i++) {
+    console.log(i, getValAtIndex(mass, i))
+    sum += getValAtIndex(mass, i)
+  }
+  return sum
+*/
+
 const calculateFuelRequirements = (moduleMasses, fuelRequiresFuel = false) => {
   return fuelRequiresFuel
     ? moduleMasses.reduce((sum, mass) => {
