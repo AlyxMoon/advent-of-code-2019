@@ -15,11 +15,6 @@ const parseInputFile = async (fileLocation) => {
 
 export const run = async ({ inputPath = '', part = 1 }) => {
   const input = await parseInputFile(inputPath)
-  // const map = [
-  //   'COM)B', 'B)C', 'C)D', 'D)E', 'E)F', 'B)G',
-  //   'G)H', 'D)I', 'E)J', 'J)K', 'K)L',
-  //   'K)YOU', 'I)SAN'
-  // ]
 
   const orbitalMap = new OrbitMap().setMap(input)
 

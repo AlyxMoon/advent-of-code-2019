@@ -3,6 +3,7 @@ const { run: day1 } = require('@scripts/day1')
 const { run: day4 } = require('@scripts/day4')
 const { run: day5part2 } = require('@scripts/day5_part2')
 const { run: day6 } = require('@scripts/day6')
+const { run: day7 } = require('@scripts/day7')
 
 describe('Solutions remain consistent', () => {
   it('Day 1', async () => {
@@ -30,9 +31,14 @@ describe('Solutions remain consistent', () => {
     expect(await day5part2({ inputPath })).toEqual([5525561])
   })
 
-  it('Day 6)', async () => {
+  it('Day 6', async () => {
     const inputPath = join(__dirname, '../../../inputs/day6.txt')
     expect(await day6({ inputPath, part: 1 })).toEqual(160040)
     expect(await day6({ inputPath, part: 2 })).toEqual(373)
+  })
+
+  it('Day 7', async () => {
+    const inputPath = join(__dirname, '../../../inputs/day7.txt')
+    expect(await day7({ inputPath })).toEqual(45730)
   })
 })
