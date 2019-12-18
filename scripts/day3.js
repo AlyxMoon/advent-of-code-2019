@@ -29,7 +29,7 @@ const buildWireGrid = (wirePaths) => {
         [wireX, wireY] = [wireX + dx, wireY + dy]
         steps += 1
 
-        let index = `${wireX},${wireY}`
+        const index = `${wireX},${wireY}`
         grid[index] = grid[index] || [0, 0]
         grid[index][wireIndex] = steps
       }
@@ -39,15 +39,24 @@ const buildWireGrid = (wirePaths) => {
   }, { '0,0': [0, 0] })
 }
 
+const findShortestManhattenDistance = (grid) => {
+  delete grid['0,0']
+  return Object.entries(grid)
+    .filter(([index, wiresTouched]) => wiresTouched[0] && wiresTouched[1])
+    .map(([index, wiresTouched]) => index.split(','))
+    .reduce((smallestDistance, [x, y]) => Math.min(smallestDistance, Math.abs(x) + Math.abs(y)), Infinity)
+}
+
 const findFewestCombinedWireSteps = (grid) => {
   return Object.values(grid)
     .filter(([wire1Steps, wire2Steps]) => wire1Steps && wire2Steps)
     .reduce((smallestDistance, [wire1Steps, wire2Steps]) => Math.min(smallestDistance, wire1Steps + wire2Steps), Infinity)
 }
 
-export const run = async ({ inputPath = '' }) => {
+export const run = async ({ inputPath = '', part = 1 }) => {
   const input = await parseInputFile(inputPath)
   const grid = buildWireGrid(input)
-  const output = findFewestCombinedWireSteps(grid)
+  const output = part === 1 ? findShortestManhattenDistance(grid) : findFewestCombinedWireSteps(grid)
+
   return output
 }

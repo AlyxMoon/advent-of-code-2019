@@ -1,7 +1,7 @@
 import { readFile } from 'fs'
 import { promisify } from 'util'
 
-import { IntcodeComputer, IntcodeProgramMode } from '../lib/programs/IntcodeComputer.js'
+import { IntcodeComputer } from '../lib/programs/IntcodeComputer.js'
 
 const parseInputFile = async (fileLocation) => {
   try {
@@ -13,13 +13,12 @@ const parseInputFile = async (fileLocation) => {
   }
 }
 
-export const run = async ({ inputPath = '' }) => {
+export const run = async ({ inputPath = '', part = 1 }) => {
   const input = await parseInputFile(inputPath)
 
-  const computer = new IntcodeComputer()
-    .setMode(IntcodeProgramMode.STANDARD)
-    .setProgram(input)
-    .setCodeInjection([[1, 12], [2, 2]])
+  const processOutput = (new IntcodeComputer()).createAndRunProcess({
+    program: input, inputs: [part === 1 ? 1 : 5],
+  })
 
-  return computer.run()
+  return processOutput.writeOutputs[processOutput.writeOutputs.length - 1]
 }

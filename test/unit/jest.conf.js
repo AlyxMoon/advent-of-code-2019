@@ -10,6 +10,9 @@ module.exports = {
     '^@lib/(.*)$': '<rootDir>/lib/$1',
     '^@scripts/(.*)$': '<rootDir>/scripts/$1',
   },
+  transform: {
+    '^.+\\.js?$': 'babel-jest',
+  },
   coverageDirectory: '<rootDir>/test/unit/coverage',
   collectCoverageFrom: [
     '<rootDir>/lib/*.{js}',

@@ -13,12 +13,13 @@
   {
     "name": "Day 2 (part 1)",
     "inputPath": "inputs/day2.txt",
-    "scriptPath": "scripts/day2_part1.js"
+    "scriptPath": "scripts/day2.js"
   },
   {
     "name": "Day 2 (part 2)",
     "inputPath": "inputs/day2.txt",
-    "scriptPath": "scripts/day2_part2.js"
+    "scriptPath": "scripts/day2.js",
+    "args": { "part": 2 }
   },
   {
     "name": "Day 3 (part 1)",
