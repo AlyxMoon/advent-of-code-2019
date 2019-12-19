@@ -74,4 +74,32 @@ describe('Intcode Computer', () => {
       inputs: [8],
     }).writeOutputs).toEqual([1])
   })
+
+  it('works with opcode 9 (adjust relative base)', () => {
+
+  })
+
+  it('correctly makes a copy in write output with specific program', () => {
+    const computer = new IntcodeComputer()
+    const processState = computer.createAndRunProcess({
+      program: [109, 1, 204, -1, 1001, 100, 1, 100, 1008, 100, 16, 101, 1006, 101, 0, 99],
+    })
+
+    expect(processState.writeOutputs).toEqual([
+      109, 1, 204, -1, 1001, 100, 1, 100, 1008, 100, 16, 101, 1006, 101, 0, 99,
+    ])
+  })
+
+  it('works with large numbers', () => {
+    const computer = new IntcodeComputer()
+    const processState1 = computer.createAndRunProcess({
+      program: [1102, 34915192, 34915192, 7, 4, 7, 99, 0],
+    })
+    const processState2 = computer.createAndRunProcess({
+      program: [104, 1125899906842624, 99],
+    })
+
+    expect(processState1.writeOutputs).toEqual([1219070632396864])
+    expect(processState2.writeOutputs).toEqual([1125899906842624])
+  })
 })
