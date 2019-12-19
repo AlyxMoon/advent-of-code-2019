@@ -97,5 +97,16 @@
     "inputPath": "inputs/day9.txt",
     "scriptPath": "scripts/day9.js",
     "args": { "part": 2 }
+  },
+  {
+    "name": "Day 10 (part 1)",
+    "inputPath": "inputs/day10.txt",
+    "scriptPath": "scripts/day10.js"
+  },
+  {
+    "name": "Day 10 (part 2)",
+    "inputPath": "inputs/day10.txt",
+    "scriptPath": "scripts/day10.js",
+    "args": { "part": 2 }
   }
 ]
