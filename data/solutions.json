@@ -24,12 +24,13 @@
   {
     "name": "Day 3 (part 1)",
     "inputPath": "inputs/day3.txt",
-    "scriptPath": "scripts/day3_part1.js"
+    "scriptPath": "scripts/day3.js"
   },
   {
     "name": "Day 3 (part 2)",
     "inputPath": "inputs/day3.txt",
-    "scriptPath": "scripts/day3_part2.js"
+    "scriptPath": "scripts/day3.js",
+    "args": { "part": 2 }
   },
   {
     "name": "Day 4 (part 1)",
@@ -45,12 +46,13 @@
   {
     "name": "Day 5 (part 1)",
     "inputPath": "inputs/day5.txt",
-    "scriptPath": "scripts/day5_part1.js"
+    "scriptPath": "scripts/day5.js"
   },
   {
     "name": "Day 5 (part 2)",
     "inputPath": "inputs/day5.txt",
-    "scriptPath": "scripts/day5_part2.js"
+    "scriptPath": "scripts/day5.js",
+    "args": { "part": 2 }
   },
   {
     "name": "Day 6 (part 1)",

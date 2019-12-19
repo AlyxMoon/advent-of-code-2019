@@ -4,6 +4,7 @@ import { promisify } from 'util'
 import {
   spaceImageFormatDecoder as decoder,
   spaceImageChecksum as checksum,
+  spaceImageGenerator as generator,
 } from '../lib/programs/SpaceImageFormatDecoder.js'
 
 const parseInputFile = async (fileLocation) => {
@@ -18,5 +19,5 @@ const parseInputFile = async (fileLocation) => {
 export const run = async ({ inputPath = '', part = 1 }) => {
   const input = await parseInputFile(inputPath)
 
-  return part === 1 ? checksum(decoder(25, 6, input)) : null
+  return part === 1 ? checksum(decoder(25, 6, input)) : generator(decoder(25, 6, input), 25, 6)
 }
