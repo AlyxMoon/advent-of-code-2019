@@ -8,7 +8,7 @@ import promptUserMainMenu from './lib/promptUserMainMenu.js'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
 const readCommandLineArgs = () => {
-  const [day, part] = (process.argv[2] || '0.1').split('.').map((num, i) => Number(num) || i)
+  const [day, part] = (process.argv[2] || '').split('.').map((num, i) => Number(num) || i)
   return { day, part }
 }
 
