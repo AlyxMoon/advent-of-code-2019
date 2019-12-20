@@ -25,7 +25,6 @@ export const run = async ({ inputPath = '', part = 1 }) => {
   }
 
   if (part === 2) {
-    // TODO Add 'SoftwareFindCorrectInjectionSequence'
     const softwareOutput = (new IntcodeComputer()).runSoftware({
       software: SoftwareFindCorrectInjectionSequence,
       softwareArgs: {
