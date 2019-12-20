@@ -1,4 +1,7 @@
-const { findBestLocation } = require('@lib/programs/MonitoringStationLocationFinder')
+const {
+  findBestLocation,
+  fireTheLaserBeam,
+} = require('@lib/programs/MonitoringStationLocationFinder')
 
 const formatInput = (input) => {
   return input.trim().split('\n').map(line => line.trim().split(''))
@@ -88,5 +91,50 @@ describe('MonitoringStationLocationFinder', () => {
       ###.##.####.##.#..##
     `)
     expect(findBestLocation(input)).toEqual([210, [11, 13]])
+  })
+
+  it('gets correct nth asteroid when firing laser beam 1', () => {
+    const input = formatInput(`
+      .#....#####...#..
+      ##...##.#####..##
+      ##...#...#.#####.
+      ..#.....#...###..
+      ..#.#.....#....##
+    `)
+
+    expect(fireTheLaserBeam(input, 1)).toEqual([8, 1])
+    expect(fireTheLaserBeam(input, 10)).toEqual([12, 2])
+    expect(fireTheLaserBeam(input, 19)).toEqual([2, 4])
+  })
+
+  it('gets correct nth asteroid when firing laser beam 2', () => {
+    const input = formatInput(`
+      .#..##.###...#######
+      ##.############..##.
+      .#.######.########.#
+      .###.#######.####.#.
+      #####.##.#.##.###.##
+      ..#####..#.#########
+      ####################
+      #.####....###.#.#.##
+      ##.#################
+      #####.##.###..####..
+      ..######..##.#######
+      ####.##.####...##..#
+      .#####..#.######.###
+      ##...#.##########...
+      #.##########.#######
+      .####.#.###.###.#.##
+      ....##.##.###..#####
+      .#.#.###########.###
+      #.#.#.#####.####.###
+      ###.##.####.##.#..##
+    `)
+
+    expect(fireTheLaserBeam(input, 1)).toEqual([11, 12])
+    expect(fireTheLaserBeam(input, 10)).toEqual([12, 8])
+    expect(fireTheLaserBeam(input, 50)).toEqual([16, 9])
+    expect(fireTheLaserBeam(input, 200)).toEqual([8, 2])
+    expect(fireTheLaserBeam(input, 299)).toEqual([11, 1])
   })
 })

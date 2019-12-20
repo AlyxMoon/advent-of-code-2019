@@ -1,7 +1,10 @@
 import { readFile } from 'fs'
 import { promisify } from 'util'
 
-import { findBestLocation } from '../lib/programs/MonitoringStationLocationFinder.js'
+import {
+  findBestLocation,
+  fireTheLaserBeam,
+} from '../lib/programs/MonitoringStationLocationFinder.js'
 
 const parseInputFile = async (fileLocation) => {
   try {
@@ -16,5 +19,11 @@ const parseInputFile = async (fileLocation) => {
 export const run = async ({ inputPath = '', part = 1 }) => {
   const input = await parseInputFile(inputPath)
 
-  return findBestLocation(input)
+  if (part === 1) {
+    return findBestLocation(input)
+  }
+  if (part === 2) {
+    const result = fireTheLaserBeam(input, 200)
+    return result[0] * 100 + result[1]
+  }
 }

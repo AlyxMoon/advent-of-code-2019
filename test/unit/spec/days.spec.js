@@ -7,6 +7,7 @@ const { run: day5 } = require('@scripts/day5')
 const { run: day6 } = require('@scripts/day6')
 const { run: day7 } = require('@scripts/day7')
 const { run: day8 } = require('@scripts/day8')
+const { run: day10 } = require('@scripts/day10')
 
 describe('Solutions remain consistent', () => {
   it('Day 1', async () => {
@@ -56,5 +57,11 @@ describe('Solutions remain consistent', () => {
     expect(await day8({ inputPath, part: 1 })).toBe(1548)
     // TODO currently don't feel like filling out the output string or something else to test. Fix at some point I guess.
     // expect(await day8({ inputPath, part: 2 })).toBe()
+  })
+
+  it('Day 10', async () => {
+    const inputPath = join(__dirname, '../../../inputs/day10.txt')
+    expect(await day10({ inputPath, part: 1 })).toBe(247)
+    expect(await day10({ inputPath, part: 2 })).toBe(1919)
   })
 })
