@@ -1,4 +1,4 @@
-const { OrbitMap } = require('@lib/programs/OrbitMap')
+const { OrbitMap } = require('@lib/programs/standalone/OrbitMap')
 
 describe('OrbitMap', () => {
   it('can create and set map properly', () => {
@@ -47,7 +47,7 @@ describe('OrbitMap', () => {
     const map = [
       'COM)B', 'B)C', 'C)D', 'D)E', 'E)F', 'B)G',
       'G)H', 'D)I', 'E)J', 'J)K', 'K)L',
-      'K)YOU', 'I)SAN'
+      'K)YOU', 'I)SAN',
     ]
 
     expect(orbitMap.setMap(map).distanceToSanta()).toBe(4)

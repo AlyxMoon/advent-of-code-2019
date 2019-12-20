@@ -1,7 +1,7 @@
 import { readFile } from 'fs'
 import { promisify } from 'util'
 
-import { OrbitMap } from '../lib/programs/OrbitMap.js'
+import { OrbitMap } from '../lib/programs/standalone/OrbitMap.js'
 
 const parseInputFile = async (fileLocation) => {
   try {

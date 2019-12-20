@@ -1,5 +1,5 @@
 const { IntcodeComputer } = require('@lib/programs/IntcodeComputer')
-const { SoftwareAmplifierControl } = require('@lib/programs/SoftwareAmplifierControl')
+const { SoftwareAmplifierControl } = require('@lib/programs/intcodeSoftware/SoftwareAmplifierControl')
 
 describe('Amplifier Control Software', () => {
   it('Can be created and set inputs without blowing up', () => {

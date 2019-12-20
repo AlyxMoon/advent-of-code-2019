@@ -1,7 +1,7 @@
 const {
   findBestLocation,
   fireTheLaserBeam,
-} = require('@lib/programs/MonitoringStationLocationFinder')
+} = require('@lib/programs/standalone/MonitoringStationLocationFinder')
 
 const formatInput = (input) => {
   return input.trim().split('\n').map(line => line.trim().split(''))

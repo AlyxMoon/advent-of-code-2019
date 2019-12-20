@@ -5,7 +5,7 @@ import {
   spaceImageFormatDecoder as decoder,
   spaceImageChecksum as checksum,
   spaceImageGenerator as generator,
-} from '../lib/programs/SpaceImageFormatDecoder.js'
+} from '../lib/programs/standalone/SpaceImageFormatDecoder.js'
 
 const parseInputFile = async (fileLocation) => {
   try {

@@ -2,7 +2,7 @@ import { readFile } from 'fs'
 import { promisify } from 'util'
 
 import { IntcodeComputer } from '../lib/programs/IntcodeComputer.js'
-import { SoftwareFindCorrectInjectionSequence } from '../lib/programs/SoftwareFindCorrectInjectionSequence.js'
+import { SoftwareFindCorrectInjectionSequence } from '../lib/programs/intcodeSoftware/SoftwareFindCorrectInjectionSequence.js'
 
 const parseInputFile = async (fileLocation) => {
   try {
