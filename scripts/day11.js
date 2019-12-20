@@ -15,12 +15,13 @@ const parseInputFile = async (fileLocation) => {
 
 export const run = async ({ inputPath = '', part = 1 }) => {
   const input = await parseInputFile(inputPath)
+  const robot = (new HullPainterRobot()).applyProgram(input)
 
   if (part === 1) {
-    const robot = new HullPainterRobot()
-    return robot.applyProgram(input).run().getPainted()
+    return robot.run().getPainted()
   }
   if (part === 2) {
-    return null
+    // TODO Another infinite loop error. Something is wrong with the Intcode computer!
+    return robot.run({ startPanel: 1 }).getPanelGrid()
   }
 }
