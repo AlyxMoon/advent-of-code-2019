@@ -102,4 +102,40 @@ describe('Intcode Computer', () => {
     expect(processState1.writeOutputs).toEqual([1219070632396864])
     expect(processState2.writeOutputs).toEqual([1125899906842624])
   })
+
+  it('test cases from reddit', () => {
+    const computer = new IntcodeComputer()
+
+    expect(computer.createAndRunProcess({
+      program: [109, -1, 4, 1, 99],
+    }).writeOutputs).toEqual([-1])
+
+    expect(computer.createAndRunProcess({
+      program: [109, -1, 104, 1, 99],
+    }).writeOutputs).toEqual([1])
+
+    expect(computer.createAndRunProcess({
+      program: [109, -1, 204, 1, 99],
+    }).writeOutputs).toEqual([109])
+
+    expect(computer.createAndRunProcess({
+      program: [109, 1, 9, 2, 204, -6, 99],
+    }).writeOutputs).toEqual([204])
+
+    expect(computer.createAndRunProcess({
+      program: [109, 1, 109, 9, 204, -6, 99],
+    }).writeOutputs).toEqual([204])
+
+    expect(computer.createAndRunProcess({
+      program: [109, 1, 209, -1, 204, -106, 99],
+    }).writeOutputs).toEqual([204])
+
+    expect(computer.createAndRunProcess({
+      program: [109, 1, 3, 3, 204, 2, 99], inputs: [169],
+    }).writeOutputs).toEqual([169])
+
+    expect(computer.createAndRunProcess({
+      program: [109, 1, 203, 2, 204, 2, 99], inputs: [291],
+    }).writeOutputs).toEqual([291])
+  })
 })
