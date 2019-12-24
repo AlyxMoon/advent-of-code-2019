@@ -4,6 +4,7 @@ import { promisify } from 'util'
 import {
   calculateVectorAtNthStep,
   getTotalEnergyFromMoons,
+  findFirstRepeatVector,
 } from '../lib/programs/standalone/MoonPositionSimulator.js'
 
 const parseInputFile = async (fileLocation) => {
@@ -22,5 +23,8 @@ export const run = async ({ inputPath = '', part = 1 }) => {
 
   if (part === 1) {
     return getTotalEnergyFromMoons(calculateVectorAtNthStep(input, 1000))
+  }
+  if (part === 2) {
+    return findFirstRepeatVector(input)
   }
 }
