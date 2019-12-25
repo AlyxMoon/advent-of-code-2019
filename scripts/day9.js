@@ -21,8 +21,6 @@ export const run = async ({ inputPath = '', part = 1 }) => {
     const processOutput = computer.createAndRunProcess({
       program: input, inputs: [1],
     })
-    console.log(processOutput)
-    process.exit()
     return processOutput.writeOutputs[0]
   }
 }

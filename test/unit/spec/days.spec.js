@@ -7,6 +7,7 @@ const { run: day5 } = require('@scripts/day5')
 const { run: day6 } = require('@scripts/day6')
 const { run: day7 } = require('@scripts/day7')
 const { run: day8 } = require('@scripts/day8')
+const { run: day9 } = require('@scripts/day9')
 const { run: day10 } = require('@scripts/day10')
 const { run: day12 } = require('@scripts/day12')
 
@@ -58,6 +59,11 @@ describe('Solutions remain consistent', () => {
     expect(await day8({ inputPath, part: 1 })).toBe(1548)
     // TODO currently don't feel like filling out the output string or something else to test. Fix at some point I guess.
     // expect(await day8({ inputPath, part: 2 })).toBe()
+  })
+
+  it('Day 9', async () => {
+    const inputPath = join(__dirname, '../../../inputs/day9.txt')
+    expect(await day9({ inputPath, part: 1 })).toBe(2171728567)
   })
 
   it('Day 10', async () => {
