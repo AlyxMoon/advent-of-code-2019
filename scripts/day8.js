@@ -1,11 +1,11 @@
-import { readFile } from 'fs'
-import { promisify } from 'util'
+const { readFile } = require('fs')
+const { promisify } = require('util')
 
-import {
-  spaceImageFormatDecoder as decoder,
-  spaceImageChecksum as checksum,
-  spaceImageGenerator as generator,
-} from '../lib/programs/standalone/SpaceImageFormatDecoder.js'
+const {
+  spaceImageFormatDecoder: decoder,
+  spaceImageChecksum: checksum,
+  spaceImageGenerator: generator,
+} = require('../lib/programs/standalone/SpaceImageFormatDecoder')
 
 const parseInputFile = async (fileLocation) => {
   try {
@@ -16,8 +16,12 @@ const parseInputFile = async (fileLocation) => {
   }
 }
 
-export const run = async ({ inputPath = '', part = 1 }) => {
+const run = async ({ inputPath = '', part = 1 }) => {
   const input = await parseInputFile(inputPath)
 
   return part === 1 ? checksum(decoder(25, 6, input)) : generator(decoder(25, 6, input), 25, 6)
+}
+
+module.exports = {
+  run,
 }

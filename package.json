@@ -6,9 +6,8 @@
   "repository": "git@github.com:AlyxMoon/advent-of-code-2019.git",
   "author": "Allister <allisterkmoon@gmail.com>",
   "license": "MIT",
-  "type": "module",
   "scripts": {
-    "start": "node --experimental-modules index.js",
+    "start": "node index.js",
     "test": "jest --config test/unit/jest.conf.js",
     "test:watch": "jest --config test/unit/jest.conf.js --watch",
     "test:coverage": "jest --config test/unit/jest.conf.js --coverage"
@@ -29,6 +28,6 @@
     "jest": "^24.9.0"
   },
   "dependencies": {
-    "chalk": "^3.0.0"
+    "terminal-kit": "https://github.com/AlyxMoon/terminal-kit"
   }
 }

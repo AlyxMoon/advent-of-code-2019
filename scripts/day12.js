@@ -1,11 +1,11 @@
-import { readFile } from 'fs'
-import { promisify } from 'util'
+const { readFile } = require('fs')
+const { promisify } = require('util')
 
-import {
+const {
   calculateVectorAtNthStep,
   getTotalEnergyFromMoons,
   findFirstRepeatVector,
-} from '../lib/programs/standalone/MoonPositionSimulator.js'
+} = require('../lib/programs/standalone/MoonPositionSimulator')
 
 const parseInputFile = async (fileLocation) => {
   try {
@@ -18,7 +18,7 @@ const parseInputFile = async (fileLocation) => {
   }
 }
 
-export const run = async ({ inputPath = '', part = 1 }) => {
+const run = async ({ inputPath = '', part = 1 }) => {
   const input = await parseInputFile(inputPath)
 
   if (part === 1) {
@@ -27,4 +27,8 @@ export const run = async ({ inputPath = '', part = 1 }) => {
   if (part === 2) {
     return findFirstRepeatVector(input)
   }
+}
+
+module.exports = {
+  run,
 }

@@ -1,5 +1,5 @@
-import { readFile } from 'fs'
-import { promisify } from 'util'
+const { readFile } = require('fs')
+const { promisify } = require('util')
 
 const parseInputFile = async (fileLocation) => {
   try {
@@ -35,7 +35,11 @@ const calculateFuelRequirements = (moduleMasses, fuelRequiresFuel = false) => {
     : moduleMasses.reduce((sum, mass) => sum + Math.floor(mass / 3) - 2, 0)
 }
 
-export const run = async ({ inputPath = '', part = 1 }) => {
+const run = async ({ inputPath = '', part = 1 }) => {
   const input = await parseInputFile(inputPath)
   return calculateFuelRequirements(input, part !== 1)
+}
+
+module.exports = {
+  run,
 }

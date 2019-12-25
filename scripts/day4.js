@@ -1,5 +1,5 @@
-import { readFile } from 'fs'
-import { promisify } from 'util'
+const { readFile } = require('fs')
+const { promisify } = require('util')
 
 const parseInputFile = async (fileLocation) => {
   try {
@@ -31,10 +31,14 @@ const hasEqualOrAscendingDigits = (number = 0) => {
   )
 }
 
-export const run = async ({ inputPath = '', part = 1 }) => {
+const run = async ({ inputPath = '', part = 1 }) => {
   const [rangeMin, rangeMax] = await parseInputFile(inputPath)
 
   return [...Array(rangeMax - rangeMin + 1)]
     .map((_, i) => rangeMin + i)
     .reduce((sum, i) => sum + (hasEqualOrAscendingDigits(i) && hasAdjacentDigits(i, part !== 1) ? 1 : 0), 0)
+}
+
+module.exports = {
+  run,
 }

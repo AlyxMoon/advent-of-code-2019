@@ -1,5 +1,5 @@
-import { readFile } from 'fs'
-import { promisify } from 'util'
+const { readFile } = require('fs')
+const { promisify } = require('util')
 
 const parseInputFile = async (fileLocation) => {
   try {
@@ -53,10 +53,14 @@ const findFewestCombinedWireSteps = (grid) => {
     .reduce((smallestDistance, [wire1Steps, wire2Steps]) => Math.min(smallestDistance, wire1Steps + wire2Steps), Infinity)
 }
 
-export const run = async ({ inputPath = '', part = 1 }) => {
+const run = async ({ inputPath = '', part = 1 }) => {
   const input = await parseInputFile(inputPath)
   const grid = buildWireGrid(input)
   const output = part === 1 ? findShortestManhattenDistance(grid) : findFewestCombinedWireSteps(grid)
 
   return output
+}
+
+module.exports = {
+  run,
 }

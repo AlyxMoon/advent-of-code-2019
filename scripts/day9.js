@@ -1,7 +1,7 @@
-import { readFile } from 'fs'
-import { promisify } from 'util'
+const { readFile } = require('fs')
+const { promisify } = require('util')
 
-import { IntcodeComputer } from '../lib/programs/IntcodeComputer.js'
+const { IntcodeComputer } = require('../lib/programs/IntcodeComputer')
 
 const parseInputFile = async (fileLocation) => {
   try {
@@ -13,7 +13,7 @@ const parseInputFile = async (fileLocation) => {
   }
 }
 
-export const run = async ({ inputPath = '', part = 1 }) => {
+const run = async ({ inputPath = '', part = 1 }) => {
   const input = await parseInputFile(inputPath)
   const computer = new IntcodeComputer()
 
@@ -22,4 +22,8 @@ export const run = async ({ inputPath = '', part = 1 }) => {
   })
 
   return processOutput.writeOutputs[0]
+}
+
+module.exports = {
+  run,
 }

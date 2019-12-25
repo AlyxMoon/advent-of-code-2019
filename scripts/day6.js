@@ -1,7 +1,7 @@
-import { readFile } from 'fs'
-import { promisify } from 'util'
+const { readFile } = require('fs')
+const { promisify } = require('util')
 
-import { OrbitMap } from '../lib/programs/standalone/OrbitMap.js'
+const { OrbitMap } = require('../lib/programs/standalone/OrbitMap')
 
 const parseInputFile = async (fileLocation) => {
   try {
@@ -13,10 +13,14 @@ const parseInputFile = async (fileLocation) => {
   }
 }
 
-export const run = async ({ inputPath = '', part = 1 }) => {
+const run = async ({ inputPath = '', part = 1 }) => {
   const input = await parseInputFile(inputPath)
 
   const orbitalMap = new OrbitMap().setMap(input)
 
   return part === 1 ? orbitalMap.checksumMap() : orbitalMap.distanceToSanta()
+}
+
+module.exports = {
+  run,
 }

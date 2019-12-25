@@ -1,8 +1,8 @@
-import { readFile } from 'fs'
-import { promisify } from 'util'
+const { readFile } = require('fs')
+const { promisify } = require('util')
 
-import { IntcodeComputer } from '../lib/programs/IntcodeComputer.js'
-import { SoftwareFindCorrectInjectionSequence } from '../lib/programs/intcodeSoftware/SoftwareFindCorrectInjectionSequence.js'
+const { IntcodeComputer } = require('../lib/programs/IntcodeComputer')
+const { SoftwareFindCorrectInjectionSequence } = require('../lib/programs/intcodeSoftware/SoftwareFindCorrectInjectionSequence')
 
 const parseInputFile = async (fileLocation) => {
   try {
@@ -14,7 +14,7 @@ const parseInputFile = async (fileLocation) => {
   }
 }
 
-export const run = async ({ inputPath = '', part = 1 }) => {
+const run = async ({ inputPath = '', part = 1 }) => {
   const input = await parseInputFile(inputPath)
 
   if (part === 1) {
@@ -35,4 +35,8 @@ export const run = async ({ inputPath = '', part = 1 }) => {
     })
     return softwareOutput ? 100 * softwareOutput[0].value + softwareOutput[1].value : 'No value found!'
   }
+}
+
+module.exports = {
+  run,
 }

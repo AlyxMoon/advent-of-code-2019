@@ -1,7 +1,7 @@
-import { readFile } from 'fs'
-import { promisify } from 'util'
+const { readFile } = require('fs')
+const { promisify } = require('util')
 
-import { HullPainterRobot } from '../lib/programs/intcodeHardware/HullPainterRobot.js'
+const { HullPainterRobot } = require('../lib/programs/intcodeHardware/HullPainterRobot')
 
 const parseInputFile = async (fileLocation) => {
   try {
@@ -13,7 +13,7 @@ const parseInputFile = async (fileLocation) => {
   }
 }
 
-export const run = async ({ inputPath = '', part = 1 }) => {
+const run = async ({ inputPath = '', part = 1 }) => {
   const input = await parseInputFile(inputPath)
   const robot = (new HullPainterRobot()).applyProgram(input)
 
@@ -25,4 +25,8 @@ export const run = async ({ inputPath = '', part = 1 }) => {
     // TODO Another infinite loop error. Something is wrong with the Intcode computer!
     console.log(robot.run({ startPanel: 1 }).getPanelGrid())
   }
+}
+
+module.exports = {
+  run,
 }

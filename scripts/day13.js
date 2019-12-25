@@ -1,8 +1,8 @@
-import { readFile } from 'fs'
-import { promisify } from 'util'
+const { readFile } = require('fs')
+const { promisify } = require('util')
 
-import { IntcodeComputer } from '../lib/programs/IntcodeComputer.js'
-import { SoftwareArcadeCabinet } from '../lib/programs/intcodeSoftware/SoftwareArcadeCabinet.js'
+const { IntcodeComputer } = require('../lib/programs/IntcodeComputer')
+const { SoftwareArcadeCabinet } = require('../lib/programs/intcodeSoftware/SoftwareArcadeCabinet')
 
 const parseInputFile = async (fileLocation) => {
   try {
@@ -14,7 +14,7 @@ const parseInputFile = async (fileLocation) => {
   }
 }
 
-export const run = async ({ inputPath = '', part = 1 }) => {
+const run = async ({ inputPath = '', part = 1 }) => {
   const input = await parseInputFile(inputPath)
   const runtimeArguments = {
     software: SoftwareArcadeCabinet,
@@ -23,4 +23,8 @@ export const run = async ({ inputPath = '', part = 1 }) => {
 
   new IntcodeComputer().runSoftware(runtimeArguments)
   process.exit()
+}
+
+module.exports = {
+  run,
 }
