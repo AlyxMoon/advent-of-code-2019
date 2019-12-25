@@ -130,5 +130,11 @@
     "inputPath": "inputs/day12.txt",
     "scriptPath": "scripts/day12.js",
     "args": { "part": 2 }
+  },
+  {
+    "name": "Day 13 (part 1)",
+    "inputPath": "inputs/day13.txt",
+    "scriptPath": "scripts/day13.js",
+    "args": { "part": 1 }
   }
 ]
