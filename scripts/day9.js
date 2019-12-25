@@ -17,10 +17,9 @@ export const run = async ({ inputPath = '', part = 1 }) => {
   const input = await parseInputFile(inputPath)
   const computer = new IntcodeComputer()
 
-  if (part === 1) {
-    const processOutput = computer.createAndRunProcess({
-      program: input, inputs: [1],
-    })
-    return processOutput.writeOutputs[0]
-  }
+  const processOutput = computer.createAndRunProcess({
+    program: input, inputs: [part],
+  })
+
+  return processOutput.writeOutputs[0]
 }

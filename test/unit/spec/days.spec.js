@@ -64,6 +64,7 @@ describe('Solutions remain consistent', () => {
   it('Day 9', async () => {
     const inputPath = join(__dirname, '../../../inputs/day9.txt')
     expect(await day9({ inputPath, part: 1 })).toBe(2171728567)
+    expect(await day9({ inputPath, part: 2 })).toBe(49815)
   })
 
   it('Day 10', async () => {
