@@ -1,17 +1,18 @@
 const { IntcodeProcess } = require('@lib/programs/IntcodeProcess')
+const { PROGRAM_STATES } = require('@lib/programs/_intcode_helpers')
 
 describe('Intcode Process', () => {
   describe('runtime instructions', () => {
     it('Ends correctly on break instruction', () => {
       const processArgs = {
-        program: [1101, 0, 0, 1, 99, 1101, 10, 10, 1]
+        program: [1101, 0, 0, 1, 99, 1101, 10, 10, 1],
       }
 
       const output = new IntcodeProcess(processArgs).run().getProgramState()
       expect(output.program).toEqual([1101, 0, 0, 1, 99, 1101, 10, 10, 1])
       expect(output.linesRead).toBe(2)
       expect(output.index).toBe(4)
-      expect(output.finished).toBe(true)
+      expect(output.statusCode).toBe(PROGRAM_STATES.FINISHED)
     })
 
     it('ADD instruction works in each mode', () => {
@@ -57,7 +58,6 @@ describe('Intcode Process', () => {
 
       const processArgs5 = { program: [209, 1, 209, 3, 99] }
       const output5 = new IntcodeProcess(processArgs5).run().getProgramState()
-
 
       expect(output1.relativeIndex).toBe(3)
       expect(output2.relativeIndex).toBe(0)

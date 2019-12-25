@@ -21,5 +21,6 @@ export const run = async ({ inputPath = '', part = 1 }) => {
     softwareArgs: { program: input },
   }
 
-  return (new IntcodeComputer()).runSoftware(runtimeArguments)
+  new IntcodeComputer().runSoftware(runtimeArguments)
+  process.exit()
 }
