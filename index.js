@@ -41,8 +41,8 @@ const main = async () => {
         .write(output || ' ', null, { color: 'yellow', prepend: 'Output: ' })
         .write(`${Date.now() - startTime}ms`, null, { color: 'yellow', prepend: 'Execution Time: ' })
         .write('\n====================')
+      process.exit()
     }
-
     activeConsole.moveAndOrClearLine(1000, false).close()
   }
   catch (err) {

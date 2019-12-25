@@ -18,10 +18,11 @@ export const run = async ({ inputPath = '', part = 1 }) => {
   const robot = (new HullPainterRobot()).applyProgram(input)
 
   if (part === 1) {
-    return robot.run().getPainted()
+    console.log(robot.run().getPanelGrid())
+    // return robot.run().getPainted()
   }
   if (part === 2) {
     // TODO Another infinite loop error. Something is wrong with the Intcode computer!
-    return robot.run({ startPanel: 1 }).getPanelGrid()
+    console.log(robot.run({ startPanel: 1 }).getPanelGrid())
   }
 }
