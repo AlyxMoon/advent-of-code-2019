@@ -14,15 +14,18 @@ const parseInputFile = async (fileLocation) => {
   }
 }
 
-const run = async ({ inputPath = '', part = 1 }) => {
+const run = async ({ inputPath = '', part = 1, watchOutput = false }) => {
   const input = await parseInputFile(inputPath)
   const runtimeArguments = {
     software: SoftwareArcadeCabinet,
-    softwareArgs: { program: input },
+    softwareArgs: {
+      program: input,
+      onlyGetBlocks: part === 1,
+      watchOutput,
+    },
   }
 
-  new IntcodeComputer().runSoftware(runtimeArguments)
-  process.exit()
+  return new IntcodeComputer().runSoftware(runtimeArguments)
 }
 
 module.exports = {
