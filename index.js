@@ -1,5 +1,5 @@
 const { join } = require('path')
-const { terminal } = require('terminal-kit')
+const { terminal, ScreenBuffer } = require('terminal-kit')
 const promptUserMainMenu = require('./lib/promptUserMainMenu')
 
 const readCommandLineArgs = () => {
