@@ -1,7 +1,7 @@
 const { readFile } = require('fs')
 const { promisify } = require('util')
 
-const { oreRequiredForFuel, parseInput } = require('../lib/programs/standalone/OreProcessingCalculator')
+const { findMaxPossibleFuel, oreRequiredForFuel, parseInput } = require('../lib/programs/standalone/OreProcessingCalculator')
 
 const loadInputFile = async (fileLocation) => {
   try {
@@ -15,7 +15,9 @@ const loadInputFile = async (fileLocation) => {
 const run = async ({ inputPath = '', part = 1 }) => {
   const input = parseInput(await loadInputFile(inputPath))
 
-  return oreRequiredForFuel(input)
+  return part === 1
+    ? oreRequiredForFuel(input)
+    : findMaxPossibleFuel(input, 1000000000000)
 }
 
 module.exports = {
