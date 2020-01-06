@@ -1,4 +1,4 @@
-const { oreProcessingCalculator, parseInput } = require('@lib/programs/standalone/OreProcessingCalculator')
+const { oreRequiredForFuel, parseInput } = require('@lib/programs/standalone/OreProcessingCalculator')
 
 describe('OreProcessingCalculator', () => {
   const input1 = `
@@ -44,13 +44,21 @@ describe('OreProcessingCalculator', () => {
     })
   })
 
-  describe('oreProcessingCalculator', () => {
+  describe('oreRequiredForFuel', () => {
+    it('does not edit original input', () => {
+      const unusedInput = parseInput(input1)
+      const input = parseInput(input1)
+
+      oreRequiredForFuel(input)
+      expect(input).toEqual(unusedInput)
+    })
+
     it('correctly gives result input 1', () => {
-      expect(oreProcessingCalculator(parseInput(input1))).toBe(31)
+      expect(oreRequiredForFuel(parseInput(input1))).toBe(31)
     })
 
     it('correctly gives result input 2', () => {
-      expect(oreProcessingCalculator(parseInput(input2))).toBe(165)
+      expect(oreRequiredForFuel(parseInput(input2))).toBe(165)
     })
   })
 })

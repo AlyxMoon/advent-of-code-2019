@@ -1,7 +1,7 @@
 const { readFile } = require('fs')
 const { promisify } = require('util')
 
-const { oreProcessingCalculator, parseInput } = require('../lib/standalone/OreProcessingCalculator')
+const { oreRequiredForFuel, parseInput } = require('../lib/programs/standalone/OreProcessingCalculator')
 
 const loadInputFile = async (fileLocation) => {
   try {
@@ -15,7 +15,7 @@ const loadInputFile = async (fileLocation) => {
 const run = async ({ inputPath = '', part = 1 }) => {
   const input = parseInput(await loadInputFile(inputPath))
 
-  return oreProcessingCalculator(input)
+  return oreRequiredForFuel(input)
 }
 
 module.exports = {
