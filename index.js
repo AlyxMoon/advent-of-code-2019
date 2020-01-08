@@ -43,13 +43,13 @@ const main = async () => {
       let output
 
       await Promise.all([
+        terminal.slowTyping(scriptRunningText, { style: terminal.cyan, delay: 15 }),
         (async () => {
           output = await script.run(Object.assign(
             {}, (args || {}), { inputPath: join(__dirname, inputPath) },
           ))
           time = Date.now() - time
         })(),
-        terminal.slowTyping(scriptRunningText, { style: terminal.cyan, delay: 15 }),
       ])
 
       terminal.moveTo(1, 2).eraseDisplayBelow().moveTo(1, 6)

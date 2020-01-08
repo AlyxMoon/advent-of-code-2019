@@ -13,12 +13,15 @@ const loadInputFile = async (fileLocation) => {
   }
 }
 
-const run = async ({ inputPath = '', part = 1 }) => {
+const run = async ({ inputPath = '', part = 1, showInProgress = true }) => {
   const input = await loadInputFile(inputPath)
 
   const robot = (new RepairRobot()).applyProgram(input)
+  const runtimeArgs = part === 1
+    ? { showInProgress, getFullMap: false, getOxygenTime: false }
+    : { showInProgress, getFullMap: true, getOxygenTime: true }
 
-  return robot.run()
+  return robot.run(runtimeArgs)
 }
 
 module.exports = {
