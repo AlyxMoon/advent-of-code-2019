@@ -16,12 +16,13 @@ const loadInputFile = async (fileLocation) => {
 }
 
 const run = async ({ inputPath = '', part = 1 }) => {
-  const input = parseInput(await loadInputFile(inputPath))
+  const input = parseInput(
+    (await loadInputFile(inputPath)).repeat(part === 1 ? 1 : 10000),
+  )
+  const useOffset = part === 2
 
-  if (part === 1) {
-    const transmission = flawedFrequencyTransmission(input)
-    return transmission.slice(0, 8).join('')
-  }
+  const transmission = flawedFrequencyTransmission(input, 100, useOffset)
+  return transmission.slice(0, 8).join('')
 }
 
 module.exports = {
