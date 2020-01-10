@@ -19,10 +19,8 @@ describe('FlawedFrequencyTransmission', () => {
 
   describe('flawedFrequencyTransmission', () => {
     it('gives correct answer for inputs', () => {
-      expect(flawedFrequencyTransmission(parseInput(input1), 4)).toEqual([0, 1, 0, 2, 9, 4, 9, 8])
-      expect(flawedFrequencyTransmission(parseInput(input2))).toEqual([
-        2, 4, 1, 7, 6, 1, 7, 6, 4, 8, 0, 9, 1, 9, 0, 4, 6, 1, 1, 4, 0, 3, 8, 7, 6, 3, 1, 9, 5, 5, 9, 5,
-      ])
+      expect(flawedFrequencyTransmission(parseInput(input1), 4)).toEqual('01029498')
+      expect(flawedFrequencyTransmission(parseInput(input2))).toEqual('24176176')
     })
   })
 })

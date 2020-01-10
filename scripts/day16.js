@@ -20,9 +20,7 @@ const run = async ({ inputPath = '', part = 1 }) => {
     (await loadInputFile(inputPath)).repeat(part === 1 ? 1 : 10000),
   )
   const useOffset = part === 2
-
-  const transmission = flawedFrequencyTransmission(input, 100, useOffset)
-  return transmission.slice(0, 8).join('')
+  return flawedFrequencyTransmission(input, 100, useOffset)
 }
 
 module.exports = {
