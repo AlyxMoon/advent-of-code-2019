@@ -28,6 +28,6 @@
     "jest": "^24.9.0"
   },
   "dependencies": {
-    "terminal-kit": "https://github.com/AlyxMoon/terminal-kit"
+    "terminal-kit": "^2.1.6"
   }
 }
